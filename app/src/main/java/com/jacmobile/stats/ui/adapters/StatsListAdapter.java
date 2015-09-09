@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.jacmobile.stats.R;
@@ -47,15 +48,15 @@ public class StatsListAdapter extends BaseAdapter
             item = new ListItem();
             LayoutInflater inflater = LayoutInflater.from(context);
             convertView = inflater.inflate(R.layout.stats_card, parent, false);
-            inflater.inflate(listItem.viewResId,
-                    (ViewGroup) convertView.findViewById(R.id.parent_stats_card), false);
-            item.title = (TextView) convertView.findViewById(listItem.titleResId);
+            RelativeLayout layout = (RelativeLayout) convertView.findViewById(R.id.parent_stats_card);
+            inflater.inflate(listItem.viewResId, layout, true);
+            item.title = (TextView) layout.findViewById(listItem.titleResId);
             convertView.setTag(item);
         } else {
             item = (ListItem) convertView.getTag();
         }
 
-        item.title.setText(context.getString(listItem.titleStringResId));
+        item.title.setText(listItem.title);
 
         return convertView;
     }

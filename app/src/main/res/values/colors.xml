@@ -11,6 +11,7 @@
 
     <color name="divider">#BCBCBC</color>
     <color name="white">#fff</color>
+    <color name="ea">#eaeaea</color>
     <color name="bg_white">#dadada</color>
     <color name="black_overlay">#66ededed</color>
 

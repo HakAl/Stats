@@ -1,53 +1,65 @@
-package com.jacmobile.stats.utils;
+package com.jacmobile.stats.utils.linux;
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+
+import com.jacmobile.stats.utils.linux.entities.PSResult;
+import com.jacmobile.stats.utils.linux.listener.LinuxCallback;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class LinuxProcessHelper
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+@Singleton public class LinuxProcessHelper
 {
-    public static final String TAG = LinuxProcessHelper.class.getSimpleName();
-    public static final String EXCEPTION = TAG + " EXCEPTION";
+    private static final String TAG = LinuxProcessHelper.class.getSimpleName();
+    private static final String EXCEPTION = TAG + " EXCEPTION";
 
-    public static final String HD = "/system/bin/hd";
-    public static final String NETSTAT = "/system/bin/netstat";
-    public static final String PRINTENV  = "/system/bin/printenv";
-    public static final String PS = "/system/bin/ps";
+    private static final String HD = "/system/bin/hd";
+    private static final String NETSTAT = "/system/bin/netstat";
+    private static final String PRINTENV  = "/system/bin/printenv";
+    private static final String PS = "/system/bin/ps";
+
+    @Inject LinuxProcessHelper() {}
+
 //    public static final String TOP = "/system/bin/top";
-//public static final String VMSTAT = "/system/bin/vmstat";
+//    public static final String VMSTAT = "/system/bin/vmstat";
 
+    public void ps(@NonNull LinuxCallback callback)
+    {
+        String result = runProcess(PS);
+        callback.onResult(new PSResult(result));
+    }
 
-
-    public static String netstat()
+    private String netstat()
     {
         return runProcess(NETSTAT);
     }
-    public static String hd()
+    private String hd()
     {
         return runProcess(HD);
     }
-    public static String ps()
+    private String ps()
     {
         return runProcess(PS);
     }
-    public static String printenv()
+    private String printenv()
     {
         return runProcess(PRINTENV);
     }
 
-
-    private static String runProcess(String which)
+    private String runProcess(String which)
     {
         Process processes = getProcess(which);
         if (processes == null) return EXCEPTION;
 
         StringBuilder processOutput = new StringBuilder();
-
-        try  {
+        try {
             BufferedReader processOutputReader = new BufferedReader(
                     new InputStreamReader(processes.getInputStream()));
             String readLine;
@@ -68,7 +80,7 @@ public class LinuxProcessHelper
                 : result;
     }
 
-    @Nullable private static Process getProcess(String which)
+    @Nullable private Process getProcess(String which)
     {
         try {
             ProcessBuilder builder = new ProcessBuilder(which);

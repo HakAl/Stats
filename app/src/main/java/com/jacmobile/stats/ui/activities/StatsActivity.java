@@ -20,7 +20,6 @@ public class StatsActivity extends AppCompatActivity
 
         setContentView(R.layout.activity_stats);
 
-
         try {
             getSupportFragmentManager()
                     .beginTransaction()
@@ -31,10 +30,7 @@ public class StatsActivity extends AppCompatActivity
         } catch (Exception e) {
             log(e.toString());
         }
-
-
     }
-
 
     void log(String toLog)
     {

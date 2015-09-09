@@ -4,5 +4,6 @@ public class StatsListItem
 {
     public int viewResId;
     public int titleResId;
-    public int titleStringResId;
+    public String title;
+//    public int titleStringResId;
 }
