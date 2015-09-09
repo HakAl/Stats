@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Stats</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+
+
+    <string name="tab_cpu">CPU</string>
+    <string name="tab_network">NETWORK</string>
+    <string name="tab_sensors">SENSORS</string>
+
+
+
+</resources>
