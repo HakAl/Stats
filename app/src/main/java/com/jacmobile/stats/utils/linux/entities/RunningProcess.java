@@ -67,7 +67,7 @@ package com.jacmobile.stats.utils.linux.entities;
  */
 
 
-import com.jacmobile.stats.utils.linux.parser.RunningProcessParser;
+import com.jacmobile.stats.utils.linux.parsers.RunningProcessParser;
 
 public class RunningProcess extends LinuxResult
 {

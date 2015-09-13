@@ -1,4 +1,4 @@
-package com.jacmobile.stats.utils.linux.parser;
+package com.jacmobile.stats.utils.linux.parsers;
 
 import com.jacmobile.stats.utils.linux.entities.RunningProcess;
 
