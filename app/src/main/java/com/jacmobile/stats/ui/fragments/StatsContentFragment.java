@@ -12,19 +12,17 @@ import android.widget.ListView;
 import com.jacmobile.stats.R;
 import com.jacmobile.stats.app.App;
 import com.jacmobile.stats.ui.adapters.StatsListAdapter;
+import com.jacmobile.stats.ui.view_items.RunningProcessListItem;
 import com.jacmobile.stats.ui.view_items.StatsListItem;
 import com.jacmobile.stats.utils.linux.LinuxProcessHelper;
-import com.jacmobile.stats.utils.linux.entities.PSResult;
+import com.jacmobile.stats.utils.linux.entities.RunningProcess;
 import com.jacmobile.stats.utils.linux.listener.LinuxCallback;
+import com.jacmobile.stats.utils.linux.parsers.WhiteSpaceRipper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import javax.inject.Inject;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
 
 public class StatsContentFragment extends Fragment
 {
@@ -56,19 +54,21 @@ public class StatsContentFragment extends Fragment
     {
         final ListView listView = (ListView) inflater.inflate(R.layout.stats_list, container, false);
         setTitle(getArguments().getString(KEY_TITLE));
-        linuxProcessHelper.ps(new LinuxCallback() {
-            @Override public void onResult(PSResult psResult)
+        linuxProcessHelper.ps(new LinuxCallback()
+        {
+            @Override public void onResult(RunningProcess runningProcess)
             {
-                StatsListItem[] items = new StatsListItem[1];
-                StatsListItem listItem = new StatsListItem();
-                listItem.title = psResult.raw;
-                listItem.titleResId = R.id.txt_ps_title;
-                listItem.viewResId = R.layout.ps_stats;
-                items[0] = listItem;
+                ArrayList<RunningProcess> r =
+                        new ArrayList<>(WhiteSpaceRipper.ripString(runningProcess.raw));
+                r.remove(0);
+                int size = r.size();
+                StatsListItem[] items = new RunningProcessListItem[size];
+                for (int i = 0; i < size; i++) {
+                    items[i] = new RunningProcessListItem(r.get(i));
+                }
                 listView.setAdapter(new StatsListAdapter(Arrays.asList(items)));
             }
         });
-
         return listView;
     }
 

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="11dp"
-    android:clipToPadding="false"
+    android:clipToPadding="true"
     android:overScrollMode="never"
     android:scrollbarStyle="outsideOverlay"
     android:id="@+id/stats_listview"

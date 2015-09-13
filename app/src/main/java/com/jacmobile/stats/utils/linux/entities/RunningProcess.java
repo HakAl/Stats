@@ -64,13 +64,12 @@ package com.jacmobile.stats.utils.linux.entities;
     root      76    1     9496   2036  ffffffff 00000000 S /system/bin/genyd
     radio     77    1     1312   412   ffffffff 00000000 S /system/bin/logwrapper
 
-
-
  */
 
 
+import com.jacmobile.stats.utils.linux.parser.RunningProcessParser;
 
-public class PSResult extends LinuxResult
+public class RunningProcess extends LinuxResult
 {
     public String user;
     public String pid;
@@ -81,8 +80,13 @@ public class PSResult extends LinuxResult
     public String pc;
     public String name;
 
-    public PSResult(String raw)
+    public RunningProcess()
+    {
+    }
+
+    public RunningProcess(String raw)
     {
         super(raw);
+        RunningProcessParser.convert(raw, this);
     }
 }

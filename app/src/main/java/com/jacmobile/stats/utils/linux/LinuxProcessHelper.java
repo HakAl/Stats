@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.jacmobile.stats.utils.linux.entities.PSResult;
+import com.jacmobile.stats.utils.linux.entities.RunningProcess;
 import com.jacmobile.stats.utils.linux.listener.LinuxCallback;
 
 import java.io.BufferedReader;
@@ -33,7 +33,7 @@ import javax.inject.Singleton;
     public void ps(@NonNull LinuxCallback callback)
     {
         String result = runProcess(PS);
-        callback.onResult(new PSResult(result));
+        callback.onResult(new RunningProcess(result));
     }
 
     private String netstat()
@@ -78,6 +78,12 @@ import javax.inject.Singleton;
         return TextUtils.isEmpty(result)
                 ? EXCEPTION
                 : result;
+    }
+
+    {
+//        \d\.\s+abc
+//        \d\.\s+abc
+//        Pattern pattern = Pattern.compile("(?<=\\s).*");
     }
 
     @Nullable private Process getProcess(String which)
