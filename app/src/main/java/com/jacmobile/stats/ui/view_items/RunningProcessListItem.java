@@ -7,11 +7,15 @@ public class RunningProcessListItem extends StatsListItem
 {
     public RunningProcess process;
 
+    /**
+     *
+     * @param process
+     */
     public RunningProcessListItem(RunningProcess process)
     {
         this.process = process;
         title = process.name;
-        titleResId = R.id.txt_ps_title;
-        viewResId = R.layout.ps_stats;
+        titleStringResId = R.id.txt_ps_title;
+        layoutResId = R.layout.ps_stats;
     }
 }

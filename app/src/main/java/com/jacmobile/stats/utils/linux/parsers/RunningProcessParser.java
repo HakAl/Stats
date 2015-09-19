@@ -1,12 +1,30 @@
 package com.jacmobile.stats.utils.linux.parsers;
 
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+
 import com.jacmobile.stats.utils.linux.entities.RunningProcess;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RunningProcessParser
 {
-    public static void convert(String raw, RunningProcess result)
+    public static List<RunningProcess> parsePS(@NonNull String raw)
     {
-        String[] array = raw.split("\\s+");
+        if (!TextUtils.isEmpty(raw)) {
+            ArrayList<RunningProcess> results = new ArrayList<>(999);
+            for (String string : raw.split("\n")) {
+                results.add(convert(new RunningProcess(string)));
+            }
+            return results;
+        }
+        return new ArrayList<>();
+    }
+
+    private static RunningProcess convert(RunningProcess result)
+    {
+        String[] array = result.raw.split("\\s+");
         if (array.length == 9) {
             result.user = array[0];
             result.pid = array[1];
@@ -17,5 +35,6 @@ public class RunningProcessParser
             result.pc = array[6];
             result.name = array[8];
         }
+        return result;
     }
 }

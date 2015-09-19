@@ -10,7 +10,7 @@ import java.util.List;
 
 public class StatsTabConfig
 {
-    public static List<StatsPagerItem> getStatsPagerItems(Context context)
+    public static List<StatsPagerItem> getStatsTabs(Context context)
     {
         List<StatsPagerItem> tabs = new ArrayList<>();
         tabs.add(new StatsPagerItem(context.getString(R.string.tab_cpu)));

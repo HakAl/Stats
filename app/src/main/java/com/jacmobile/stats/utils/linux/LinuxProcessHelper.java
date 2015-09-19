@@ -25,10 +25,10 @@ import javax.inject.Singleton;
     private static final String PRINTENV  = "/system/bin/printenv";
     private static final String PS = "/system/bin/ps";
 
-    @Inject LinuxProcessHelper() {}
-
 //    public static final String TOP = "/system/bin/top";
 //    public static final String VMSTAT = "/system/bin/vmstat";
+
+    @Inject LinuxProcessHelper() {}
 
     public void ps(@NonNull LinuxCallback callback)
     {
@@ -78,12 +78,6 @@ import javax.inject.Singleton;
         return TextUtils.isEmpty(result)
                 ? EXCEPTION
                 : result;
-    }
-
-    {
-//        \d\.\s+abc
-//        \d\.\s+abc
-//        Pattern pattern = Pattern.compile("(?<=\\s).*");
     }
 
     @Nullable private Process getProcess(String which)

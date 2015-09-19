@@ -56,7 +56,7 @@
     <style name="Tabs">
         <item name="actionMenuTextColor">@color/white</item>
         <item name="android:textColorPrimary">@color/bg_white</item>
-        <item name="android:textColorSecondary">@color/divider</item>
+        <item name="android:textColorSecondary">@color/trans_bg_white</item>
         <item name="colorControlNormal">@color/divider</item>
         <item name="colorControlActivated">@color/accent</item>
         <item name="android:background">@color/primary_dark</item>

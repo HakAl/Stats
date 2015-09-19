@@ -13,6 +13,8 @@
     <color name="white">#fff</color>
     <color name="ea">#eaeaea</color>
     <color name="bg_white">#dadada</color>
+    <color name="dseven">#d7d7d7</color>
+    <color name="trans_bg_white">#99dadada</color>
     <color name="black_overlay">#66ededed</color>
 
 </resources>

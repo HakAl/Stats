@@ -2,7 +2,7 @@ package com.jacmobile.stats.ui.view_items;
 
 import android.support.v4.app.Fragment;
 
-import com.jacmobile.stats.ui.fragments.StatsContentFragment;
+import com.jacmobile.stats.ui.fragments.RunningProcessFragment;
 
 public class StatsPagerItem
 {
@@ -15,7 +15,7 @@ public class StatsPagerItem
 
     public Fragment createFragment()
     {
-        return StatsContentFragment.newInstance(title);
+        return RunningProcessFragment.newInstance(title);
     }
 
     public CharSequence getTitle()
