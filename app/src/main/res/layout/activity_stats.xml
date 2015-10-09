@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".BaseActivity"
+    tools:context=".StatsActivity"
     >
 
     <!--<android.support.v7.widget.Toolbar-->

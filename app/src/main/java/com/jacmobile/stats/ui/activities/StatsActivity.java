@@ -12,7 +12,6 @@ public class StatsActivity extends AppCompatActivity
 {
     public static final String TAG = StatsActivity.class.getSimpleName();
 
-
     @Override protected void onCreate(Bundle savedInstanceState)
     {
         ((App)getApplicationContext()).getAppComponent().inject(this);

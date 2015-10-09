@@ -2,12 +2,11 @@ package com.jacmobile.stats.ui.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -82,5 +81,20 @@ public class RunningProcessFragment extends Fragment
         listView.setAdapter(new StatsListAdapter(Arrays.asList(items)));
         psTitle.setText(String.format("Total Processes: %s", size));
         psSubtitle.setText("32%% Memory Capacity");
+    }
+    boolean[] result = {false};
+    public boolean checkAndroidData()
+   {
+       new Handler().post(new Runnable()
+       {
+           @Override
+           public void run()
+           {
+               // Android code here
+               // I need know the value of this variable
+               result[0] = true;
+            }
+        });
+        return result[0];
     }
 }

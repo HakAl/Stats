@@ -25,8 +25,22 @@ import javax.inject.Singleton;
     private static final String PRINTENV  = "/system/bin/printenv";
     private static final String PS = "/system/bin/ps";
 
-//    public static final String TOP = "/system/bin/top";
+//    public static final String TOP = "/system/bin/top/cat";
 //    public static final String VMSTAT = "/system/bin/vmstat";
+
+//    ArrayList<String> commandLine = new ArrayList<String>();
+//    commandLine.add("logcat");//$NON-NLS-1$
+//    [...]
+//
+//    Process process = Runtime.getRuntime().exec(commandLine);
+//    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+//    try {
+//    Process process = Runtime.getRuntime().exec("top -n 1 -d 1");
+//    BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
+//} catch (InterruptedException e) {
+//    e.printStackTrace();
+//}
 
     @Inject LinuxProcessHelper() {}
 
